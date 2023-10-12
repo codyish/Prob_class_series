@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Cody S">
 
-<title>My Notebook 1.0</title>
+<title>Homework 1</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,6 +68,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="probHW1_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="probHW1_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="probHW1_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -82,13 +86,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">My Notebook 1.0</h1>
+<h1 class="title">Homework 1</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Cody S </p>
+          </div>
+  </div>
     
   
     
@@ -100,32 +110,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>This assignment will be reviewed by peers based upon a given rubric. Make sure to keep your answers clear and concise while demonstrating an understanding of the material. Be sure to give all requested information in markdown cells. It is recommended to utilize Latex.</p>
-<section id="problem-1-xx" class="level3">
-<h3 class="anchored" data-anchor-id="problem-1-xx">Problem 1 xx</h3>
+<section id="problem-1" class="level3">
+<h3 class="anchored" data-anchor-id="problem-1">Problem 1</h3>
 <p>The Birthday Problem: This is a classic problem that has a nonintuitive answer. Suppose there are <span class="math inline">\(N\)</span> students in a room.</p>
 <section id="part-a" class="level4">
 <h4 class="anchored" data-anchor-id="part-a">Part a)</h4>
 <p>What is the probability that at least two of them have the same birthday (month and day)? (Assume that each day is equally likely to be a student’s birthday, that there are no sets of twins, and that there are 365 days in the year. Do not include leap years).</p>
-<p>Note: Jupyter has two types of cells: Programming and Markdown. Programming is where you will create and run R code. The Markdown cells are where you will type out expalantions and mathematical expressions. <a href="https://www.markdownguide.org/basic-syntax/">Here</a> is a document on Markdown some basic markdwon syntax. Also feel free to look at the underlying markdown of any of the provided cells to see how we use markdown.</p>
 <p><span class="math display">\[\begin{align*}
     P(\text{At least two have same birthday}) &amp;= ? \\
-    &amp;= \text{YOUR ANSWER HERE}
+    &amp;= \text{$1-\frac{365 \times 364\times...\times(365-n+1)}{365^n}$}
 \end{align*}\]</span></p>
 </section>
 <section id="part-b" class="level4">
 <h4 class="anchored" data-anchor-id="part-b">Part b)</h4>
 <p>How large must <span class="math inline">\(N\)</span> be so that the probability that at least two of them have the same birthday is at least 1/2?</p>
-<p>YOUR ANSWER HERE</p>
+<p><strong>Answer</strong>: N must be at least 23.</p>
 </section>
 <section id="part-c" class="level4">
 <h4 class="anchored" data-anchor-id="part-c">Part c)</h4>
 <p>Plot the number of students on the <span class="math inline">\(x\)</span>-axis versus the probability that at least two of them have the same birthday on the <span class="math inline">\(y\)</span>-axis.</p>
-<p>YOUR ANSWER HERE</p>
+<div id="cell-12" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># write the birthday function in an R friendly way</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>prob_bday_match <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="dv">1</span> <span class="sc">-</span> ((<span class="fu">prod</span>(<span class="dv">365</span><span class="sc">:</span>(<span class="dv">365</span> <span class="sc">-</span> n <span class="sc">+</span> <span class="dv">1</span>)) <span class="sc">/</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>              (<span class="dv">365</span> <span class="sc">^</span> n)))</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="cf">function</span>(x) <span class="fu">prob_bday_match</span>(x)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-539a35d47e664c97a50115a146a7f1bd-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div>
+<img src="probHW1_files/figure-html/cell-2-output-1.png" id="fig-539a35d47e664c97a50115a146a7f1bd-1" class="img-fluid figure-img">
+</div>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="thought-question-ungraded" class="level4">
 <h4 class="anchored" data-anchor-id="thought-question-ungraded">Thought Question (Ungraded)</h4>
 <p>Thought question (Ungraded): Would you be surprised if there were 100 students in the room and no two of them had the same birthday? What would that tell you about that set of students?</p>
-<p>YOUR ANSWER HERE</p>
+<p>Very suprised, at <span class="math inline">\({N=100}\)</span> there is nearly a 100% chance that 2 randomly selected students have the same birthday. It’s hard to say what might have lead to this, but they could have been arrange by birthday prior to breaking into groups.</p>
 </section>
 </section>
 <section id="problem-2" class="level1">
@@ -134,23 +162,135 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Part a)</strong></p>
 <p>Let <span class="math inline">\(X\)</span> be a random variable for the number rolled on a fair, six-sided die. How would we go about simulating <span class="math inline">\(X\)</span>?</p>
 <p>Start by creating a list of numbers [1, 6]. Then use the <code>sample()</code> function with our list of numbers to simulate <strong>a single</strong> roll of the die, as in simulate <span class="math inline">\(X\)</span>. We would recommend looking at the documentation for <code>sample()</code>, found <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/sample">here</a>, or by executing <code>?sample</code> in a Jupyter cell.</p>
-<div id="cell-18" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your Code Here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-18" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a dice numbered 1 through 6</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># sample it one time</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(x, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+6
+</div>
 </div>
 <p><strong>Part b)</strong></p>
 <p>In our initial problem, we said that <span class="math inline">\(X\)</span> comes from a fair die, meaning each value is equally likely to be rolled. Because our die has <span class="math inline">\(6\)</span> sides, each side should appear about <span class="math inline">\(1/6^{th}\)</span> of the time. How would we confirm that our simulation is fair?</p>
 <p>What if we generate multiple instances of <span class="math inline">\(X\)</span>? That way, we could compare if the simulated probabilities match the theoretical probabilities (i.e.&nbsp;are all <span class="math inline">\(1/6\)</span>).</p>
 <p>Generate <span class="math inline">\(12\)</span> instances of <span class="math inline">\(X\)</span> and calculate the proportion of occurances for each face. Do your simulated results appear to come from a fair die? Now generate <span class="math inline">\(120\)</span> instances of <span class="math inline">\(X\)</span> and look at the proportion of each face. What do you notice?</p>
 <p>Note: Each time you run your simulations, you will get different values. If you want to guarantee that your simulation will result in the same values each time, use the <code>set.seed()</code> function. This function will allow your simulations to be reproducable.</p>
-<div id="cell-20" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">112358</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Your Code Here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+<p><strong>Answer note</strong>: I set the number of rolls, ran the function to display the results, then plotted another run of the function for two values of n for the sake of being explicit even though it’s not the DRYest code. The run that prints results and the plot each use a function instance so the exact results may not match.</p>
+<div id="cell-21" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="98">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">112358</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># a function that lets you roll the x-defined dice n number of times</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>repeat_rolls <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">replicate</span>(n, <span class="fu">sample</span>(x, <span class="dv">1</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 12 rolls</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">12</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"12 rolls"</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="fu">repeat_rolls</span>(n)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> <span class="cn">NULL</span>,</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> (<span class="fu">repeat_rolls</span>(n)))</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.5</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 120 rolls</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">120</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"120 rolls"</span>)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="fu">repeat_rolls</span>(n)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> <span class="cn">NULL</span>,</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> (<span class="fu">repeat_rolls</span>(n)))</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "12 rolls"
+[1] "120 rolls"</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>2</li><li>4</li><li>6</li><li>2</li><li>4</li><li>1</li><li>5</li><li>3</li><li>6</li><li>3</li><li>2</li><li>3</li></ol>
+</div>
+<div class="cell-output cell-output-display">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>1</li><li>1</li><li>4</li><li>5</li><li>3</li><li>3</li><li>4</li><li>5</li><li>4</li><li>6</li><li>5</li><li>1</li><li>2</li><li>2</li><li>5</li><li>4</li><li>3</li><li>4</li><li>1</li><li>2</li><li>3</li><li>2</li><li>5</li><li>4</li><li>3</li><li>3</li><li>3</li><li>4</li><li>3</li><li>4</li><li>5</li><li>1</li><li>1</li><li>1</li><li>5</li><li>3</li><li>1</li><li>6</li><li>5</li><li>3</li><li>3</li><li>6</li><li>2</li><li>4</li><li>1</li><li>6</li><li>1</li><li>3</li><li>2</li><li>6</li><li>6</li><li>6</li><li>3</li><li>2</li><li>4</li><li>6</li><li>4</li><li>6</li><li>3</li><li>1</li><li>5</li><li>3</li><li>4</li><li>2</li><li>2</li><li>6</li><li>2</li><li>1</li><li>3</li><li>6</li><li>6</li><li>3</li><li>5</li><li>2</li><li>4</li><li>5</li><li>3</li><li>6</li><li>1</li><li>1</li><li>3</li><li>5</li><li>1</li><li>5</li><li>1</li><li>4</li><li>1</li><li>5</li><li>2</li><li>4</li><li>1</li><li>3</li><li>3</li><li>1</li><li>5</li><li>4</li><li>6</li><li>2</li><li>3</li><li>4</li><li>3</li><li>3</li><li>1</li><li>2</li><li>2</li><li>6</li><li>4</li><li>5</li><li>1</li><li>1</li><li>4</li><li>3</li><li>5</li><li>6</li><li>5</li><li>3</li><li>6</li><li>4</li><li>2</li><li>3</li></ol>
+</div>
+<div class="cell-output cell-output-display">
+<div id="fig-539a35d47e664c97a50115a146a7f1bd-2" class="quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div>
+<img src="probHW1_files/figure-html/cell-4-output-4.png" id="fig-539a35d47e664c97a50115a146a7f1bd-2" class="img-fluid figure-img">
+</div>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="fig-539a35d47e664c97a50115a146a7f1bd-3" class="quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div>
+<img src="probHW1_files/figure-html/cell-4-output-5.png" id="fig-539a35d47e664c97a50115a146a7f1bd-3" class="img-fluid figure-img">
+</div>
+</figure>
+</div>
+</div>
 </div>
 <p><strong>Part c)</strong></p>
 <p>What if our die is not fair? How would we simulate that?</p>
 <p>Let’s assume that <span class="math inline">\(Y\)</span> comes from an unfair six-sided die, where <span class="math inline">\(P(Y=3)=1/2\)</span> and all other face values have an equal probability of occuring. Use the <code>sample()</code> function to simulate this situation. Then display the proportion of each face value, to confirm that the faces occur with the desired probabilities. Make sure that <span class="math inline">\(n\)</span> is large enough to be confident in your answer.</p>
-<div id="cell-23" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your Code Here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-23" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="99">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Biased die function.</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># The probabilities have least common denominators for clarity</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>repeat_unfair_rolls <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replicate</span>(</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    n,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sample</span>(y, <span class="dv">1</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">replace =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">prob =</span> <span class="fu">c</span>(<span class="dv">3</span> <span class="sc">/</span> <span class="dv">30</span>, <span class="dv">3</span> <span class="sc">/</span> <span class="dv">30</span>, <span class="dv">15</span> <span class="sc">/</span> <span class="dv">30</span>, <span class="dv">3</span> <span class="sc">/</span> <span class="dv">30</span>, <span class="dv">3</span> <span class="sc">/</span> <span class="dv">30</span>, <span class="dv">3</span> <span class="sc">/</span> <span class="dv">30</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="fu">repeat_unfair_rolls</span>(<span class="dv">100</span>)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> <span class="cn">NULL</span>,</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> (<span class="fu">repeat_unfair_rolls</span>(n)))</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>2</li><li>3</li><li>2</li><li>3</li><li>6</li><li>5</li><li>5</li><li>3</li><li>6</li><li>3</li><li>4</li><li>2</li><li>5</li><li>3</li><li>3</li><li>5</li><li>1</li><li>5</li><li>1</li><li>5</li><li>4</li><li>2</li><li>6</li><li>3</li><li>3</li><li>3</li><li>3</li><li>3</li><li>5</li><li>3</li><li>3</li><li>3</li><li>3</li><li>6</li><li>3</li><li>3</li><li>2</li><li>1</li><li>3</li><li>3</li><li>4</li><li>6</li><li>3</li><li>3</li><li>5</li><li>2</li><li>1</li><li>3</li><li>3</li><li>4</li><li>3</li><li>3</li><li>3</li><li>4</li><li>3</li><li>1</li><li>2</li><li>6</li><li>3</li><li>4</li><li>2</li><li>5</li><li>3</li><li>3</li><li>4</li><li>3</li><li>2</li><li>3</li><li>6</li><li>1</li><li>2</li><li>3</li><li>1</li><li>5</li><li>3</li><li>3</li><li>3</li><li>3</li><li>3</li><li>5</li><li>3</li><li>3</li><li>3</li><li>6</li><li>4</li><li>5</li><li>2</li><li>5</li><li>3</li><li>2</li><li>1</li><li>3</li><li>3</li><li>6</li><li>6</li><li>2</li><li>5</li><li>3</li><li>3</li><li>1</li></ol>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div id="fig-539a35d47e664c97a50115a146a7f1bd-4" class="quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div>
+<img src="probHW1_files/figure-html/cell-5-output-3.png" id="fig-539a35d47e664c97a50115a146a7f1bd-4" class="img-fluid figure-img">
+</div>
+</figure>
+</div>
+</div>
 </div>
 </section>
 
