@@ -1,0 +1,68 @@
+library(ggplot2)
+
+# Define the data
+data <- data.frame(
+  V1 = c(32577, 29581, 23654, 23585, 35547, 26596, 27152, 25114, 20217, 32795, 29691, 22524, 24287, 34070, 29447, 33821, 26907, 36299, 24577, 24899),
+  V2 = c(23042, 20205, 27264, 21742, 28364, 22739, 24933, 26544, 32524, 19760, 20339, 19166, 26186, 22145, 25411, 17131, 22067, 19426, 22414, 25970),
+  V3 = c(32978, 18114, 25800, 22400, 22283, 39648, 19356, 21105, 29632, 25050, 21304, 25152, 18587, 29787, 23057, 24420, 40951, 23234, 21446, 37148),
+  V4 = c(32634, 23263, 29825, 21103, 20007, 20227, 24305, 24284, 23682, 19714, 25279, 25164, 20180, 19155, 18480, 39218, 35081, 21310, 30886, 20777),
+  V5 = c(27487, 23204, 24657, 29360, 18000, 24670, 20110, 28984, 22451, 28577, 18217, 14918, 18317, 29136, 18904, 30343, 29677, 19317, 28194, 30764),
+  V6 = c(15760, 22530, 28021, 31911, 18606, 26500, 26453, 31605, 22486, 25718, 28460, 31322, 34480, 19264, 20393, 23486, 29279, 28593, 24457, 35742),
+  V7 = c(19428, 26513, 31514, 30952, 15617, 28709, 16449, 25862, 30981, 23306, 17315, 18282, 33986, 17609, 18281, 19805, 21742, 15858, 25938, 18615),
+  V8 = c(23231, 19648, 20854, 22422, 31939, 23964, 27195, 24293, 23345, 33735, 34752, 27013, 26575, 19258, 22310, 28495, 30314, 23762, 20576, 25105),
+  V9 = c(24965, 27614, 17292, 32429, 29992, 11656, 26490, 19527, 32536, 26374, 21995, 27968, 17602, 19781, 27830, 24924, 22908, 21554, 23791, 22660),
+  V10 = c(39427, 17574, 25280, 23323, 23636, 17418, 25391, 16374, 28880, 30979, 35069, 25828, 24977, 19535, 17917, 22750, 18951, 16659, 31613, 22055)
+)
+
+
+
+# Calculate 60% confidence intervals for each column
+confidence_level <- 0.60
+z_score <- qnorm(0.5 + confidence_level / 2)
+
+calculate_ci <- function(column) {
+  mean <- mean(column)
+  std_err <- sd(column) / sqrt(length(column))
+  margin_of_error <- z_score * std_err
+  lower_bound <- mean - margin_of_error
+  upper_bound <- mean + margin_of_error
+  c(lower_bound, upper_bound)
+}
+
+# Apply the function to each column
+CIs <- as.data.frame(t(apply(data, 2, calculate_ci)))
+names(CIs) <- c("Lower", "Upper")
+
+# True mean
+true_mean <- 25000
+
+# Determine if the true mean is within the CI
+contains_true_mean <- apply(CIs, 1, function(ci) true_mean >= ci[1] && true_mean <= ci[2])
+contains_true_mean <- ifelse(contains_true_mean, "Y", "N")
+
+
+
+# Number of CIs to plot
+CIs_to_plot <- 10
+
+# Prepare the data frame for plotting
+segment_data <- data.frame(
+  x = seq(1, CIs_to_plot),
+  xend = seq(1, CIs_to_plot), 
+  y = CIs[1:CIs_to_plot, "Lower"],
+  yend = CIs[1:CIs_to_plot, "Upper"],
+  contains_mean = contains_true_mean[1:CIs_to_plot]
+)
+
+# Define colors
+group.colors <- c(Y = "#CFB87C", N = "#565A5C")
+
+# Create the plot
+g <- ggplot() +
+  geom_segment(data = segment_data, aes(x = x, y = y, xend = xend, yend = yend, color = contains_mean)) +
+  scale_color_manual(values = group.colors) +
+  geom_hline(yintercept = true_mean, linetype = "dashed", color = "black") +
+  labs(title = "60% Confidence Intervals", x = "CI Index", y = "Value") +
+  theme_minimal()
+
+print(g)
