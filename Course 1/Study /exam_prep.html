@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="CS">
 
-<title>Week 1</title>
+<title>Course 1 prep</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -111,13 +112,19 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 1</h1>
+<h1 class="title">Course 1 prep</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>CS </p>
+          </div>
+  </div>
     
   
     
@@ -128,6 +135,8 @@ window.Quarto = {
 </header>
 
 
+<section id="week-1" class="level1">
+<h1>Week 1</h1>
 <section id="module-1-quiz" class="level2">
 <h2 class="anchored" data-anchor-id="module-1-quiz">Module 1 Quiz</h2>
 <section id="problem-1" class="level3">
@@ -287,6 +296,7 @@ Answer
 <p><span class="math inline">\(P(\text{at least one zero}) = 1 - P(\text{no zeros}) = 1 - \frac{32}{243} = \frac{243 - 32}{243} = \frac{211}{243}\)</span></p>
 </details></section>
 </section>
+</section>
 <section id="week-2" class="level1">
 <h1>Week 2</h1>
 <section id="module-2-quiz" class="level2">
@@ -392,7 +402,7 @@ Answer
 Answer
 </summary>
 <p>0.067</p>
-<div id="cell-25" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="17">
+<div id="cell-25" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>p_found_locator <span class="ot">&lt;-</span> (<span class="fl">0.60</span> <span class="sc">*</span> <span class="fl">0.70</span>) <span class="sc">/</span> ((<span class="fl">0.60</span> <span class="sc">*</span> <span class="fl">0.70</span>) <span class="sc">+</span> (<span class="fl">0.10</span> <span class="sc">*</span> <span class="fl">0.30</span>))</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>p_not_found_loc <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> p_found_locator</span>
@@ -429,7 +439,7 @@ Answer
 0.0081
 </details>
 <hr>
-<div id="cell-30" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="33">
+<div id="cell-30" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">dbinom</span>(<span class="dv">2</span>, <span class="dv">5</span>, <span class="fl">0.90</span>),<span class="dv">4</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">choose</span>(<span class="dv">5</span>,<span class="dv">2</span>) <span class="sc">*</span> <span class="fl">0.90</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> ((<span class="dv">1</span><span class="fl">-0.90</span>)<span class="sc">^</span>(<span class="dv">5-2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -588,7 +598,11 @@ Answer
 <section id="question-1-2" class="level3">
 <h3 class="anchored" data-anchor-id="question-1-2">Question 1:</h3>
 <p>A skilled worker requires at least 10 minutes, and no more than 20 minutes, to complete a certain task. The completion time <span class="math inline">\(X\)</span> is a continuous random variable with density function:</p>
-<p>$ f(x) = 10 x $ and $ f(x) = 0 x. $</p>
+<p><span class="math display">\[
+f(x) = \frac{c}{x^2} \text{ for } 10 \leq x \leq 20
+\]</span> and <span class="math display">\[
+f(x) = 0 \text{ for all other values of } x.
+\]</span></p>
 <p>What is the value of <span class="math inline">\(c\)</span>?</p>
 <details>
 <summary>
@@ -890,7 +904,7 @@ Answer
 0.471
 </details>
 <hr>
-<div id="cell-64" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="1">
+<div id="cell-64" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">punif</span>(<span class="fl">0.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 0.6
