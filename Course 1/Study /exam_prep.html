@@ -615,7 +615,11 @@ Answer
 <section id="question-2-2" class="level3">
 <h3 class="anchored" data-anchor-id="question-2-2">Question 2:</h3>
 <p>A skilled worker requires at least 10 minutes, and no more than 20 minutes, to complete a certain task. The completion time <span class="math inline">\(X\)</span> is a continuous random variable with density function:</p>
-<p>$ f(x) = 10 x $ and $ f(x) = 0 x. $</p>
+<p><span class="math display">\[
+f(x) = \frac{c}{x^2} \text{ for } 10 \leq x \leq 20
+\]</span> and <span class="math display">\[
+f(x) = 0 \text{ for all other values of } x.
+\]</span></p>
 <p>Find the probability that the worker completes the task in 15 minutes or less. Round your answer to three decimal places.</p>
 <details>
 <summary>
@@ -628,7 +632,11 @@ Answer
 <section id="question-3-2" class="level3">
 <h3 class="anchored" data-anchor-id="question-3-2">Question 3:</h3>
 <p>A skilled worker requires at least 10 minutes, and no more than 20 minutes, to complete a certain task. The completion time <span class="math inline">\(X\)</span> is a continuous random variable with density function:</p>
-<p>$ f(x) = 10 x $ and $ f(x) = 0 x. $</p>
+<p><span class="math display">\[
+f(x) = \frac{c}{x^2} \text{ for } 10 \leq x \leq 20
+\]</span> and <span class="math display">\[
+f(x) = 0 \text{ for all other values of } x.
+\]</span></p>
 <p>Find the expected time for the worker to complete the task. Round your answer to three decimal places.</p>
 <details>
 <summary>
@@ -641,7 +649,9 @@ Answer
 <section id="question-4-2" class="level3">
 <h3 class="anchored" data-anchor-id="question-4-2">Question 4:</h3>
 <p>The number of eggs laid on a tree leaf by an insect of a certain type is a Poisson random variable, <span class="math inline">\(X\)</span>, with parameter <span class="math inline">\(c\)</span>, where <span class="math inline">\(E(X) = c\)</span>. However, such a random variable can only be observed if it is positive, since if it is 0, then we cannot know that such an insect was on the leaf. If we let <span class="math inline">\(Y\)</span> denote the observed number of eggs, then:</p>
-<p>$ P(Y = i) = P(X = i X &gt; 0) $</p>
+<p><span class="math display">\[
+P(Y = i) = P(X = i \mid X &gt; 0)
+\]</span></p>
 <p>where <span class="math inline">\(X\)</span> is Poisson with parameter <span class="math inline">\(c\)</span>.</p>
 <p>Find <span class="math inline">\(E(Y)\)</span>.</p>
 <p>(Note 1: your answer will be a mathematical expression with <span class="math inline">\(c\)</span>. When you type in your answer, the preview box will display what the mathematical expression looks like.)</p>
@@ -657,7 +667,9 @@ Answer
 <h3 class="anchored" data-anchor-id="question-5-2">Question 5:</h3>
 <p>Suppose <span class="math inline">\(X\)</span> is a random variable <span class="math inline">\(X \sim N(12, 4)\)</span>.</p>
 <p>Find the probability that <span class="math inline">\(X\)</span> is within 1.5 standard deviations of the mean. Round your answer to four decimal places.</p>
-<p>$ P(9 X ) = P(-1.5 Z ) = (1.5) - (-1.5) - 0.0668 = 0.8664 $</p>
+<p><span class="math display">\[
+P(9 \leq X \leq 15) = P(-1.5 \leq Z \leq 1.5) = \Phi(1.5) - \Phi(-1.5) \approx 0.9332 - 0.0668 = 0.8664
+\]</span></p>
 <details>
 <summary>
 Answer
