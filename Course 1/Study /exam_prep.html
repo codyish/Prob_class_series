@@ -436,20 +436,12 @@ Answer
 <summary>
 Answer
 </summary>
-0.0081
+<p>0.0081</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(<span class="fu">dbinom</span>(<span class="dv">2</span>, <span class="dv">5</span>, <span class="fl">0.90</span>),<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The probably of the number of sucesses is <span class="math inline">\(p^k = 0.90^2\)</span> the probability of the number of failures is <span class="math inline">\((1-p)^{n-k} = (1-0.90)^{5-2}\)</span> and the ways to arrange those is <span class="math inline">\({n \choose k}  = {5 \choose 2}\)</span> which give the entire pdf</p>
+<p><span class="math display">\[ P(X=x) = {n \choose k}p^k (1-p)^{n - k}\]</span></p>
 </details>
 <hr>
-<div id="cell-30" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">dbinom</span>(<span class="dv">2</span>, <span class="dv">5</span>, <span class="fl">0.90</span>),<span class="dv">4</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">choose</span>(<span class="dv">5</span>,<span class="dv">2</span>) <span class="sc">*</span> <span class="fl">0.90</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> ((<span class="dv">1</span><span class="fl">-0.90</span>)<span class="sc">^</span>(<span class="dv">5-2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-0.0081
-</div>
-<div class="cell-output cell-output-display">
-0.0081
-</div>
-</div>
 </section>
 <section id="question-2-1" class="level3">
 <h3 class="anchored" data-anchor-id="question-2-1">Question 2:</h3>
@@ -459,7 +451,8 @@ Answer
 <summary>
 Answer
 </summary>
-4.5
+<p>4.5</p>
+This one can be worked out logically. For binomial <span class="math inline">\(E[X] = np\)</span>
 </details>
 <hr>
 </section>
@@ -471,7 +464,8 @@ Answer
 <summary>
 Answer
 </summary>
-0.45
+<p>0.45</p>
+For Binomial <span class="math inline">\(Var[X] = np(1-p)\)</span> and will just come from the sheet.
 </details>
 <hr>
 </section>
@@ -486,6 +480,15 @@ Answer
 0.0564
 </details>
 <hr>
+<div id="cell-33" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fl">0.06</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span><span class="sc">-</span>p)<span class="sc">^</span>(x<span class="dv">-1</span>) <span class="sc">*</span> p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+0.0564
+</div>
+</div>
 </section>
 <section id="question-5-1" class="level3">
 <h3 class="anchored" data-anchor-id="question-5-1">Question 5:</h3>
@@ -498,6 +501,12 @@ Answer
 16.67
 </details>
 <hr>
+<div id="cell-35" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">/</span><span class="fl">0.06</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+16.6666666666667
+</div>
+</div>
 </section>
 <section id="question-6-1" class="level3">
 <h3 class="anchored" data-anchor-id="question-6-1">Question 6:</h3>
@@ -510,6 +519,12 @@ Answer
 261.11
 </details>
 <hr>
+<div id="cell-37" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span><span class="sc">-</span>p) <span class="sc">/</span> p<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+261.111111111111
+</div>
+</div>
 </section>
 <section id="question-7-1" class="level3">
 <h3 class="anchored" data-anchor-id="question-7-1">Question 7:</h3>
@@ -523,6 +538,27 @@ Answer
 0.81
 </details>
 <hr>
+<div id="cell-39" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>one <span class="ot">&lt;-</span> <span class="fl">0.17</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>two <span class="ot">&lt;-</span> <span class="fl">0.07</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>three <span class="ot">&lt;-</span> <span class="fl">0.13</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>one_or_two <span class="ot">&lt;-</span> <span class="fl">0.18</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>two_or_three <span class="ot">&lt;-</span> <span class="fl">0.18</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>one_or_three <span class="ot">&lt;-</span> <span class="fl">0.19</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>one_two_threes <span class="ot">&lt;-</span> <span class="fl">0.01</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>one_and_two <span class="ot">&lt;-</span> one <span class="sc">+</span> two <span class="sc">-</span> one_or_two</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>two_and_three <span class="ot">&lt;-</span> two <span class="sc">+</span> three <span class="sc">-</span> two_or_three</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>one_and_three <span class="ot">&lt;-</span> one <span class="sc">+</span> three <span class="sc">-</span> one_or_three</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>total <span class="ot">&lt;-</span> one <span class="sc">+</span> two <span class="sc">+</span> three <span class="sc">-</span> one_and_two <span class="sc">-</span> one_and_three <span class="sc">-</span> two_and_three <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">*</span> one_two_threes)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span>total</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+0.81
+</div>
+</div>
 </section>
 <section id="question-8-1" class="level3">
 <h3 class="anchored" data-anchor-id="question-8-1">Question 8:</h3>
@@ -534,6 +570,21 @@ Answer
 0.02
 </details>
 <hr>
+<div id="cell-41" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>p_of_1 <span class="ot">&lt;-</span> one <span class="sc">+</span> two <span class="sc">+</span> three <span class="sc">-</span> one_and_two <span class="sc">-</span> one_and_two <span class="sc">-</span> one_and_three</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>total</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>total <span class="sc">-</span> one_and_two <span class="sc">-</span> one_and_three <span class="sc">-</span> two_and_three <span class="sc">+</span> (<span class="dv">2</span> <span class="sc">*</span> one_two_threes),</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="dv">3</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+0.19
+</div>
+<div class="cell-output cell-output-display">
+0.02
+</div>
+</div>
 </section>
 <section id="question-9-1" class="level3">
 <h3 class="anchored" data-anchor-id="question-9-1">Question 9:</h3>
@@ -545,6 +596,12 @@ Answer
 0.16
 </details>
 <hr>
+<div id="cell-43" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>one_and_two <span class="sc">+</span> one_and_three <span class="sc">+</span> two_and_three <span class="sc">-</span> (<span class="dv">3</span> <span class="sc">*</span> one_two_threes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+0.16
+</div>
+</div>
 </section>
 <section id="question-10" class="level3">
 <h3 class="anchored" data-anchor-id="question-10">Question 10:</h3>
@@ -567,6 +624,12 @@ Answer
 0.37
 </details>
 <hr>
+<div id="cell-46" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>((<span class="dv">0</span> <span class="sc">*</span> <span class="fl">0.81</span>) <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">*</span> <span class="fl">0.02</span>) <span class="sc">+</span> (<span class="dv">2</span> <span class="sc">*</span> <span class="fl">0.16</span>) <span class="sc">+</span> (<span class="dv">3</span> <span class="sc">*</span> <span class="fl">0.01</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+0.37
+</div>
+</div>
 </section>
 <section id="question-12" class="level3">
 <h3 class="anchored" data-anchor-id="question-12">Question 12:</h3>
@@ -916,8 +979,8 @@ Answer
 0.471
 </details>
 <hr>
-<div id="cell-64" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">punif</span>(<span class="fl">0.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-69" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">punif</span>(<span class="fl">0.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 0.6
 </div>
