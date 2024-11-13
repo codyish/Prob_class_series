@@ -477,10 +477,13 @@ For Binomial <span class="math inline">\(Var[X] = np(1-p)\)</span> and will just
 <summary>
 Answer
 </summary>
-0.0564
+<p>0.0564</p>
+<p>This is the first success variation on a geometrics distribution <span class="math display">\[P(X=x) = (1-p)^{x-1}p\]</span></p>
+<p><span class="math display">\[P(X=2) = (1-0.06)^{2-1}\times 0.06 = 0.0564\]</span></p>
+The only difference from the standard Geometric is subtracting 1 from the <span class="math inline">\(x\)</span> in the exponent and adding 1 to calculate <span class="math inline">\(E[X]\)</span>
 </details>
 <hr>
-<div id="cell-33" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="6">
+<div id="cell-33" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fl">0.06</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -498,15 +501,10 @@ Answer
 <summary>
 Answer
 </summary>
-16.67
+<p>16.67</p>
+<span class="math inline">\(E[X]\)</span> for the Geometric distribution is <span class="math inline">\(\frac {1}{p} - 1\)</span>, for the first sucess variation you just have to add one to account for the additional count of including the success <span class="math display">\[\frac{1}{p}\]</span>.
 </details>
 <hr>
-<div id="cell-35" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">/</span><span class="fl">0.06</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-16.6666666666667
-</div>
-</div>
 </section>
 <section id="question-6-1" class="level3">
 <h3 class="anchored" data-anchor-id="question-6-1">Question 6:</h3>
@@ -516,11 +514,13 @@ Answer
 <summary>
 Answer
 </summary>
-261.11
+<p>261.11</p>
+<p>The variance of the first success Geometric and standard Geometric will be the same, since inluding the success just shifts the distribution, but doesn’t change the spread.</p>
+<span class="math display">\[\frac{1-p}{p^2} = \frac{1-0.06}{0.06^2} = 261.11\]</span>
 </details>
 <hr>
-<div id="cell-37" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span><span class="sc">-</span>p) <span class="sc">/</span> p<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-36" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span><span class="sc">-</span>p) <span class="sc">/</span> p<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 261.111111111111
 </div>
@@ -535,26 +535,28 @@ Answer
 <summary>
 Answer
 </summary>
-0.81
+<p>0.81</p>
+<p>Add together all of the single occurrence probabilities, subtract all of the two-occurrence probabilities because they all got counted twice, then add back in the three-occurence probability because it got added in three times and then subtracted three times but needs to be counted once. Then subtract that from 1 to get the probability of no occurrence. (Draw a picture.)</p>
+<span class="math display">\[1 - P(A_1) + P(A_2) + P(A_3) - P(A_1 \cup A_2) - P(A_2 \cup A_3) - P(A_1 \cup A_3) + P(A_1 \cap A_2 \cap A_3)\]</span>
 </details>
 <hr>
-<div id="cell-39" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>one <span class="ot">&lt;-</span> <span class="fl">0.17</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>two <span class="ot">&lt;-</span> <span class="fl">0.07</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>three <span class="ot">&lt;-</span> <span class="fl">0.13</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>one_or_two <span class="ot">&lt;-</span> <span class="fl">0.18</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>two_or_three <span class="ot">&lt;-</span> <span class="fl">0.18</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>one_or_three <span class="ot">&lt;-</span> <span class="fl">0.19</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>one_two_threes <span class="ot">&lt;-</span> <span class="fl">0.01</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>one_and_two <span class="ot">&lt;-</span> one <span class="sc">+</span> two <span class="sc">-</span> one_or_two</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>two_and_three <span class="ot">&lt;-</span> two <span class="sc">+</span> three <span class="sc">-</span> two_or_three</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>one_and_three <span class="ot">&lt;-</span> one <span class="sc">+</span> three <span class="sc">-</span> one_or_three</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>total <span class="ot">&lt;-</span> one <span class="sc">+</span> two <span class="sc">+</span> three <span class="sc">-</span> one_and_two <span class="sc">-</span> one_and_three <span class="sc">-</span> two_and_three <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">*</span> one_two_threes)</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span>total</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-38" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>one <span class="ot">&lt;-</span> <span class="fl">0.17</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>two <span class="ot">&lt;-</span> <span class="fl">0.07</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>three <span class="ot">&lt;-</span> <span class="fl">0.13</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>one_or_two <span class="ot">&lt;-</span> <span class="fl">0.18</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>two_or_three <span class="ot">&lt;-</span> <span class="fl">0.18</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>one_or_three <span class="ot">&lt;-</span> <span class="fl">0.19</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>one_two_threes <span class="ot">&lt;-</span> <span class="fl">0.01</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>one_and_two <span class="ot">&lt;-</span> one <span class="sc">+</span> two <span class="sc">-</span> one_or_two</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>two_and_three <span class="ot">&lt;-</span> two <span class="sc">+</span> three <span class="sc">-</span> two_or_three</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>one_and_three <span class="ot">&lt;-</span> one <span class="sc">+</span> three <span class="sc">-</span> one_or_three</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>total <span class="ot">&lt;-</span> one <span class="sc">+</span> two <span class="sc">+</span> three <span class="sc">-</span> one_and_two <span class="sc">-</span> one_and_three <span class="sc">-</span> two_and_three <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">*</span> one_two_threes)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span>total</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 0.81
 </div>
@@ -567,24 +569,16 @@ Answer
 <summary>
 Answer
 </summary>
-0.02
+<p>0.02</p>
+<p>Take the total probability of any type of defect occurring from the previous quesion (0.19) and subtract all the two-defect probabilities, then re-add the three-defect option twice because it got subtracted too many times.</p>
+<p><span class="math display">\[P(X=1) = P(X&gt;0) - P(A_1 \cap A_2) - P(A_2 \cap A_3) - P(A_1 \cap A_3) + (2 \times P(A_1 \cap A_2 \cap A_3))\]</span></p>
+<p>or</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">round</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>total <span class="sc">-</span> one_and_two <span class="sc">-</span> one_and_three <span class="sc">-</span> two_and_three <span class="sc">+</span> (<span class="dv">2</span> <span class="sc">*</span> one_two_threes),</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">3</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <hr>
-<div id="cell-41" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>p_of_1 <span class="ot">&lt;-</span> one <span class="sc">+</span> two <span class="sc">+</span> three <span class="sc">-</span> one_and_two <span class="sc">-</span> one_and_two <span class="sc">-</span> one_and_three</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>total</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>total <span class="sc">-</span> one_and_two <span class="sc">-</span> one_and_three <span class="sc">-</span> two_and_three <span class="sc">+</span> (<span class="dv">2</span> <span class="sc">*</span> one_two_threes),</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="dv">3</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-0.19
-</div>
-<div class="cell-output cell-output-display">
-0.02
-</div>
-</div>
 </section>
 <section id="question-9-1" class="level3">
 <h3 class="anchored" data-anchor-id="question-9-1">Question 9:</h3>
@@ -593,15 +587,13 @@ Answer
 <summary>
 Answer
 </summary>
-0.16
+<p>0.16</p>
+<p>Similar to before, but just add together all the two-defect possibilities, then subtract the three-defect option three times because it got added in each time. NOTE THAT THE TWO-DEFECT PROBABILITIES ARE NOT GIVEN AND MUST BE CALCULATED (cups to caps)</p>
+<p><span class="math display">\[P(X=2) = P(A_1 \cap A_2) + P(A_2 \cap A_3) + P(A_1 \cap A_3) - (3 \times P(A_1 \cap A_2 \cap A_3))\]</span></p>
+<p><span class="math display">\[P(X=2) = 0.06 + 0.02 + 0.11 - 3(0.01) = 0.16\]</span></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>  one_and_two <span class="sc">+</span> one_and_three <span class="sc">+</span> two_and_three <span class="sc">-</span> (<span class="dv">3</span> <span class="sc">*</span> one_two_threes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <hr>
-<div id="cell-43" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>one_and_two <span class="sc">+</span> one_and_three <span class="sc">+</span> two_and_three <span class="sc">-</span> (<span class="dv">3</span> <span class="sc">*</span> one_two_threes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-0.16
-</div>
-</div>
 </section>
 <section id="question-10" class="level3">
 <h3 class="anchored" data-anchor-id="question-10">Question 10:</h3>
@@ -610,7 +602,9 @@ Answer
 <summary>
 Answer
 </summary>
-0.01
+<p>0.01</p>
+<p>This is just the overlapping of all three circles.</p>
+<span class="math display">\[P(X=3) = P(A_1 \cap A_2 \cap A_3) = 0.01\]</span>
 </details>
 <hr>
 </section>
@@ -621,11 +615,13 @@ Answer
 <summary>
 Answer
 </summary>
-0.37
+<p>0.37</p>
+<p>This is the probability weight average of each outcome value <span class="math display">\[P(X=0) = 0.81\]</span> <span class="math display">\[P(X=1) = 0.02\]</span> <span class="math display">\[P(X=2) = 0.16\]</span> <span class="math display">\[P(X=3) = 0.01\]</span></p>
+<span class="math display">\[E[X] = 0\times(0.81) + 1\times(0.02) + 2\times(0.16) + 3\times(0.01) = 0.37\]</span>
 </details>
 <hr>
-<div id="cell-46" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>((<span class="dv">0</span> <span class="sc">*</span> <span class="fl">0.81</span>) <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">*</span> <span class="fl">0.02</span>) <span class="sc">+</span> (<span class="dv">2</span> <span class="sc">*</span> <span class="fl">0.16</span>) <span class="sc">+</span> (<span class="dv">3</span> <span class="sc">*</span> <span class="fl">0.01</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-43" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>((<span class="dv">0</span> <span class="sc">*</span> <span class="fl">0.81</span>) <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">*</span> <span class="fl">0.02</span>) <span class="sc">+</span> (<span class="dv">2</span> <span class="sc">*</span> <span class="fl">0.16</span>) <span class="sc">+</span> (<span class="dv">3</span> <span class="sc">*</span> <span class="fl">0.01</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 0.37
 </div>
@@ -638,7 +634,16 @@ Answer
 <summary>
 Answer
 </summary>
-0.6131
+<p>0.6131</p>
+<p><span class="math display">\[Var[X] = E[X^2] - E[X]^2\]</span></p>
+<p><span class="math display">\[0^2 \times(0.81) + 1^2 \times(0.02) + 2^2\times(0.16) + 3^2\times(0.01) - (0.37)^2\]</span></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>probs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.81</span>, <span class="fl">0.02</span>, <span class="fl">0.16</span>, <span class="fl">0.01</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>vals <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>exp_x_squared <span class="ot">&lt;-</span> <span class="fu">sum</span>(vals<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> probs)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>exp_x <span class="ot">&lt;-</span> <span class="fl">0.37</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>exp_x_squared <span class="sc">-</span> exp_x<span class="sc">^</span><span class="dv">2</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <hr>
 </section>
@@ -649,8 +654,15 @@ Answer
 <summary>
 Answer
 </summary>
-0.783
+<p>0.783</p>
+<span class="math display">\[\sigma = \sqrt{(Var[X])} = \sqrt{0.6131} = 0.7830\]</span>
 </details>
+<div id="cell-46" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fl">0.6131</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+0.783007024234138
+</div>
+</div>
 </section>
 </section>
 </section>
@@ -979,12 +991,6 @@ Answer
 0.471
 </details>
 <hr>
-<div id="cell-69" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">punif</span>(<span class="fl">0.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-0.6
-</div>
-</div>
 </section>
 <section id="question-2-4" class="level3">
 <h3 class="anchored" data-anchor-id="question-2-4">Question 2:</h3>
