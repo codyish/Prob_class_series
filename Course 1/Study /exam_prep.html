@@ -683,7 +683,17 @@ f(x) = 0 \text{ for all other values of } x.
 <summary>
 Answer
 </summary>
-20
+<p>20</p>
+<p>The integral over that range must equal one since it is a complete probability.</p>
+<p><span class="math display">\[\int_{10}^{20}\frac{c}{x^2}\,dx = c\int_{10}^{20}x^{-2}\,dx = 1\]</span></p>
+<p><span class="math display">\[c \cdot[-\frac{1}{x}] \big|_{10}^{20} = c\cdot \frac{1}{20} = 1\]</span></p>
+<p><span class="math display">\[c = 20\]</span></p>
+<p>or</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span><span class="sc">/</span>(x<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(f, <span class="dv">10</span>, <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <hr>
 </section>
@@ -700,9 +710,26 @@ f(x) = 0 \text{ for all other values of } x.
 <summary>
 Answer
 </summary>
-0.667
+<p>0.667</p>
+<p>Now we know the actual function we can integrate over any range of interest.</p>
+<p><span class="math display">\[\int_{10}^{15}\frac{20}{x^2}\,dx = \frac{2}{3} \approx 0.667\]</span></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span> (x) {</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">20</span> <span class="sc">/</span> x<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(f, <span class="dv">10</span>, <span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <hr>
+<div id="cell-51" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span> (x) {</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">20</span> <span class="sc">/</span> x<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(f, <span class="dv">10</span>, <span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>0.6666667 with absolute error &lt; 7.4e-15</code></pre>
+</div>
+</div>
 </section>
 <section id="question-3-2" class="level3">
 <h3 class="anchored" data-anchor-id="question-3-2">Question 3:</h3>
@@ -717,9 +744,40 @@ f(x) = 0 \text{ for all other values of } x.
 <summary>
 Answer
 </summary>
-13.863
+<p>13.863</p>
+<p>The expectation formula is the integral of the distribution function multiplied by <span class="math inline">\(x\)</span> over the relevant domain.</p>
+<p><span class="math display">\[E[X] = \int_{a}^{b} x \cdot f(x)\,dx\]</span></p>
+<p><span class="math display">\[E[X] = \int_{10}^{20} x \cdot \frac{20}{x^2}\,dx\]</span></p>
+<p><span class="math display">\[E[X] = \int_{10}^{20} \frac{20}{x}\,dx\]</span></p>
+<p><span class="math display">\[E[X] = 20 \cdot \int_{10}^{20} \frac{1}{x}\,dx\]</span></p>
+<p><span class="math display">\[E[X] = 20 \cdot (\ln{20} - \ln{10}) \approx 13.863\]</span></p>
+<p>or</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if you have the integral basically solved</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>(<span class="fu">log</span>(<span class="dv">20</span>) <span class="sc">-</span> <span class="fu">log</span>(<span class="dv">10</span>)) <span class="sc">*</span> <span class="dv">20</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># whole thing</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    x <span class="sc">*</span> (<span class="dv">20</span><span class="sc">/</span>x<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(f, <span class="dv">10</span>, <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <hr>
+<div id="cell-53" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">log</span>(<span class="dv">20</span>) <span class="sc">-</span> <span class="fu">log</span>(<span class="dv">10</span>)) <span class="sc">*</span> <span class="dv">20</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    x <span class="sc">*</span> (<span class="dv">20</span><span class="sc">/</span>x<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(f, <span class="dv">10</span>, <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+13.8629436111989
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>13.86294 with absolute error &lt; 1.5e-13</code></pre>
+</div>
+</div>
 </section>
 <section id="question-4-2" class="level3">
 <h3 class="anchored" data-anchor-id="question-4-2">Question 4:</h3>
@@ -734,7 +792,28 @@ P(Y = i) = P(X = i \mid X &gt; 0)
 <summary>
 Answer
 </summary>
-<p><span class="math inline">\(\frac{c}{1 - e^{-c}}\)</span></p>
+<p>WTF probably just skip this one</p>
+<p>The Poisson PDF is <span class="math inline">\(P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}, \quad k = 0, 1, 2, \ldots\)</span></p>
+<p>or in this case</p>
+<p><span class="math display">\[P(X = i) = \frac{c^i e^{-c}}{i!}, \quad i = 0, 1, 2, \ldots\]</span></p>
+<p>We have to offset everything to exclude the 0 option. <span class="math display">\[P(Y = i) = P(X = i \mid X &gt; 0)\]</span></p>
+<p>is a conditional probability, so we can use the conditional probability equation to get</p>
+<p><span class="math display">\[P(Y = i) = \frac{P(X = i)}{P(X &gt; 0)} = \frac{\frac{e^{-c} c^i}{i!}}{1 - e^{-c}}\]</span></p>
+<p>Note: The bottom term comes from</p>
+<p><span class="math display">\[P(X=0) = e^{-c}\]</span></p>
+<p>so the probability that <span class="math inline">\(PX(&gt;0)\)</span> is the complement</p>
+<p><span class="math display">\[1 - e^{-c}\]</span></p>
+<p>End Note.</p>
+<p><span class="math display">\[\frac{\frac{e^{-c} c^i}{i!}}{1 - e^{-c}}\]</span></p>
+<p>Then we calculate the expectation</p>
+<p><span class="math display">\[E(Y) = \frac{1}{1 - e^{-c}} \sum_{i=1}^\infty \frac{i c^i}{i!}\]</span></p>
+<p>Simplify the series: The term <span class="math display">\[\sum_{i=1}^\infty \frac{i c^i}{i!}\]</span></p>
+<p>can be rewritten as:</p>
+<p><span class="math display">\[\sum_{i=1}^\infty \frac{i c^i}{i!} = c \sum_{i=1}^\infty \frac{c^{i-1}}{(i-1)!} = c \cdot \sum_{k=0}^\infty \frac{c^k}{k!} = c \cdot e^c\]</span></p>
+<p>So:</p>
+<p><span class="math display">\[E(Y) = \frac{1}{1 - e^{-c}} \cdot c\]</span></p>
+<p>Simplify the expression:</p>
+<p><span class="math display">\[E(Y) = \frac{c}{1 - e^{-c}}\]</span></p>
 </details>
 <hr>
 </section>
@@ -742,14 +821,24 @@ Answer
 <h3 class="anchored" data-anchor-id="question-5-2">Question 5:</h3>
 <p>Suppose <span class="math inline">\(X\)</span> is a random variable <span class="math inline">\(X \sim N(12, 4)\)</span>.</p>
 <p>Find the probability that <span class="math inline">\(X\)</span> is within 1.5 standard deviations of the mean. Round your answer to four decimal places.</p>
-<p><span class="math display">\[
-P(9 \leq X \leq 15) = P(-1.5 \leq Z \leq 1.5) = \Phi(1.5) - \Phi(-1.5) \approx 0.9332 - 0.0668 = 0.8664
-\]</span></p>
 <details>
 <summary>
 Answer
 </summary>
-0.8664
+<p>0.8664</p>
+<p><span class="math display">\[
+P(9 \leq X \leq 15) = P(-1.5 \leq Z \leq 1.5) = \Phi(1.5) - \Phi(-1.5) \approx 0.9332 - 0.0668 = 0.8664
+\]</span></p>
+<p>The variance is 4, so so the standard deviation is 2, so 1.5 SD is 3 in each direction around the mean, giving a range of 9-15. From there it’s just pnorm lookups. (Don’t forget that pnorm() asks for SD but notation give variance.)</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># quick</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">15</span>, <span class="dv">12</span>, <span class="dv">2</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">9</span>, <span class="dv">12</span>, <span class="dv">2</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># or long form</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>mean <span class="ot">&lt;-</span> <span class="dv">12</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>var <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>sd <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(var)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(mean <span class="sc">+</span> (<span class="fl">1.5</span> <span class="sc">*</span> sd), mean, var) <span class="sc">-</span> <span class="fu">pnorm</span>(mean <span class="sc">-</span> (<span class="fl">1.5</span> <span class="sc">*</span> sd), mean, var)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <hr>
 </section>
@@ -761,8 +850,26 @@ Answer
 <summary>
 Answer
 </summary>
-14.56
+<p>14.56</p>
+<p>Just a cdf lookup (qnorm()). Don’t forget the direction - this is asking for 10% over, qnorm() looks up the value cumulative probability under, so need to do 1-prob in this case.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>mean <span class="ot">&lt;-</span> <span class="dv">12</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>var <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>sd <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(var)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>cutoff <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.90</span>, mean, sd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div id="cell-57" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>mean <span class="ot">&lt;-</span> <span class="dv">12</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>variance <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>sd <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(variance)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>cutoff <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.90</span>, mean, sd)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(cutoff,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+14.56
+</div>
+</div>
 </section>
 </section>
 </section>
@@ -777,9 +884,20 @@ Answer
 <summary>
 Answer
 </summary>
-25
+<p>25</p>
+<p>The intuitive approach is to combine the average gain and the average loss. Since these are simple distributions the expected gain over all outcomes is $50 and the expected loss is -$25, so the overall expected gain is $25.</p>
+This only works because they are linear operators.
 </details>
 <hr>
+<div id="cell-61" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>gain <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>loss <span class="ot">&lt;-</span> <span class="dv">50</span> <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>gain <span class="sc">-</span> loss</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+25
+</div>
+</div>
 </section>
 <section id="question-2-3" class="level3">
 <h3 class="anchored" data-anchor-id="question-2-3">Question 2:</h3>
@@ -788,9 +906,34 @@ Answer
 <summary>
 Answer
 </summary>
-0.3412
+<p>0.3412</p>
+<p>Since the average time is 10 minutes then the rate <span class="math inline">\(\lambda\)</span> is 1 every 10 minutes <span class="math inline">\(\lambda = 1/10\)</span></p>
+<p>The probability that an individual worker finishes in under 12 minutes can be calculated from the PDF</p>
+<p><span class="math display">\[P(X\leq x) = 1 - e^{-\lambda x}\]</span></p>
+<p><span class="math display">\[P(X\leq 12) = 1-e^{-\frac{1}{10} \cdot 12} \approx 0.6988\]</span></p>
+<p>or with pexp()</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">10</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pexp</span>(<span class="dv">12</span>, lambda)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then since each worker is independent the probability that all of them finish in under 12 minutes is just each probability multiplied together, <span class="math inline">\((P \leq 12)^3 \approx 0.3412\)</span></p>
 </details>
 <hr>
+<div id="cell-63" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">exp</span>(<span class="sc">-</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>) <span class="sc">*</span> <span class="dv">12</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>single_worker <span class="ot">&lt;-</span> <span class="fu">pexp</span>(<span class="dv">12</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>single_worker</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>((single_worker<span class="sc">^</span><span class="dv">3</span>),<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+0.698805788087798
+</div>
+<div class="cell-output cell-output-display">
+0.698805788087798
+</div>
+<div class="cell-output cell-output-display">
+0.3412
+</div>
+</div>
 </section>
 <section id="question-3-3" class="level3">
 <h3 class="anchored" data-anchor-id="question-3-3">Question 3:</h3>
@@ -824,7 +967,9 @@ Answer
 <summary>
 Answer
 </summary>
-0.5
+<p>0.5</p>
+<p>Add up all the marginal probabilities for which <span class="math inline">\(x=1\)</span>.</p>
+<span class="math display">\[0.20 + 0.25 + 0.05 = 0.50\]</span>
 </details>
 <hr>
 </section>
@@ -860,7 +1005,33 @@ Answer
 <summary>
 Answer
 </summary>
-0.25
+<p>0.25</p>
+<p>Just add up marginal probabilities.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>—</th>
+<th><span class="math inline">\(y=1\)</span></th>
+<th><span class="math inline">\(y=4\)</span></th>
+<th><span class="math inline">\(y=16\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(x=1\)</span></td>
+<td>0.20</td>
+<td>0.25</td>
+<td>0.05</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(x=5\)</span></td>
+<td><strong>0.10</strong></td>
+<td><strong>0.15</strong></td>
+<td>0.25</td>
+</tr>
+</tbody>
+</table>
+<span class="math display">\[0.10 + 0.15 = 0.25\]</span>
 </details>
 <hr>
 </section>
@@ -896,9 +1067,78 @@ Answer
 <summary>
 Answer
 </summary>
-5.4
+<p>5.4</p>
+<p><span class="math display">\[Cov(X,Y) = E\Big(\big(X-E(X)\big)\big(Y - E(Y)\big)\Big)\]</span></p>
+<p>which simplifies to</p>
+<p><span class="math display">\[Cov(X,Y) = E[XY] - E[X] \cdot E[Y]\]</span></p>
+<p>by hand this looks like</p>
+<p><span class="math display">\[ E[X] = (1)(0.50) + (5)(0.50) = 3\]</span> <span class="math display">\[ E[Y] = (1)(0.30) + (4)(0.40) + (16)(0.30) = 6.7\]</span> <span class="math display">\[ \begin{align*}
+E[XY] = &amp; \, (1)(1)(0.20) + (1)(4)(0.25) + (1)(16)(0.05) + \\
+        &amp; \, (5)(1)(0.10) + (5)(4)(0.15) + (5)(16)(0.25) = 25.5
+\end{align*}\]</span></p>
+<p><span class="math display">\[Cov(X,Y) = 25.5 - (3 \cdot 6.7) = 5.4\]</span></p>
+<p>Programmatically</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">16</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>x_prob <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>y_prob <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.30</span>, <span class="fl">0.40</span>, <span class="fl">0.30</span>)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>exp_x <span class="ot">&lt;-</span> <span class="fu">sum</span>(x <span class="sc">*</span> x_prob)</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>exp_y <span class="ot">&lt;-</span> <span class="fu">sum</span>(y <span class="sc">*</span> y_prob)</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="co"># this part is tricky, might have to do it by hand instead</span></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>prob_matrix <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.20</span>, <span class="fl">0.25</span>, <span class="fl">0.05</span>, </span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>                        <span class="fl">0.10</span>, <span class="fl">0.15</span>, <span class="fl">0.25</span>),</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>                        <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>exp_x_y <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">outer</span>(x, y, <span class="st">"*"</span>) <span class="sc">*</span> prob_matrix)</span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>covariance_x_y <span class="ot">&lt;-</span> exp_x_y <span class="sc">-</span> (exp_x <span class="sc">*</span> exp_y)</span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>covariance_x_y <span class="co">#5.4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <hr>
+<div id="cell-67" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">16</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>x_prob <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>y_prob <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.30</span>, <span class="fl">0.40</span>, <span class="fl">0.30</span>)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>prob_matrix <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.20</span>, <span class="fl">0.25</span>, <span class="fl">0.05</span>, </span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>                        <span class="fl">0.10</span>, <span class="fl">0.15</span>, <span class="fl">0.25</span>),</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>                        <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>exp_x <span class="ot">&lt;-</span> <span class="fu">sum</span>(x <span class="sc">*</span> x_prob)</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>exp_y <span class="ot">&lt;-</span> <span class="fu">sum</span>(y <span class="sc">*</span> y_prob)</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>exp_x_y <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">outer</span>(x, y, <span class="st">"*"</span>) <span class="sc">*</span> prob_matrix)</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>var_x <span class="ot">&lt;-</span> (<span class="fu">sum</span>(x<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> x_prob)) <span class="sc">-</span> exp_x<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>var_y <span class="ot">&lt;-</span> (<span class="fu">sum</span>(y<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> y_prob)) <span class="sc">-</span> exp_y<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>sd_x <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(var_x)</span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>sd_y <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(var_y)</span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>exp_x</span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>exp_y</span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>exp_x_y</span>
+<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a>covariance_x_y <span class="ot">&lt;-</span> exp_x_y <span class="sc">-</span> (exp_x <span class="sc">*</span> exp_y)</span>
+<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a>covariance_x_y</span>
+<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+3
+</div>
+<div class="cell-output cell-output-display">
+6.7
+</div>
+<div class="cell-output cell-output-display">
+25.5
+</div>
+<div class="cell-output cell-output-display">
+5.4
+</div>
+</div>
 </section>
 <section id="question-6-3" class="level3">
 <h3 class="anchored" data-anchor-id="question-6-3">Question 6:</h3>
@@ -932,9 +1172,59 @@ Answer
 <summary>
 Answer
 </summary>
-0.4345
+<p>0.4345</p>
+<p><span class="math display">\[\rho = Corr(X,Y) = \frac{Cov(X,Y)}{\sigma(x)\sigma(y)}\]</span></p>
+<p>We already have <span class="math inline">\(Cov(X,Y)\)</span> so we just have to calculate the variance of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p>
+<p><span class="math display">\[Var(X) = E[X^2] - (E[X])^2\]</span></p>
+<p><span class="math display">\[Var(X) = ((1^2)(0.50) + (5^2)(0.50)) - 3^2 = 4\]</span></p>
+<p><span class="math display">\[Var(Y) = ((1^2)(0.30) + (4^2)(0.40) + (16^2)(0.30)) - 6.7^2 = 38.61\]</span></p>
+<p><span class="math display">\[Corr(X,Y) = \frac {5.4}{\sqrt{4} \cdot \sqrt{38.61}} \approx 0.4345\]</span></p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">16</span>)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>x_prob <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>)</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>y_prob <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.30</span>, <span class="fl">0.40</span>, <span class="fl">0.30</span>)</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>exp_x <span class="ot">&lt;-</span> <span class="fu">sum</span>(x <span class="sc">*</span> x_prob)</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>exp_y <span class="ot">&lt;-</span> <span class="fu">sum</span>(y <span class="sc">*</span> y_prob)</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>var_x <span class="ot">&lt;-</span> (<span class="fu">sum</span>(x<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> x_prob)) <span class="sc">-</span> exp_x<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>var_y <span class="ot">&lt;-</span> (<span class="fu">sum</span>(y<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> y_prob)) <span class="sc">-</span> exp_y<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>covariance_x_y <span class="ot">&lt;-</span> exp_x_y <span class="sc">-</span> (exp_x <span class="sc">*</span> exp_y)</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>corr_x_y <span class="ot">&lt;-</span> covariance_x_y <span class="sc">/</span> (<span class="fu">sqrt</span>(var_x) <span class="sc">*</span> <span class="fu">sqrt</span>(var_y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <hr>
+<div id="cell-69" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">16</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>x_prob <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>y_prob <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.30</span>, <span class="fl">0.40</span>, <span class="fl">0.30</span>)</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>exp_x <span class="ot">&lt;-</span> <span class="fu">sum</span>(x <span class="sc">*</span> x_prob)</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>exp_y <span class="ot">&lt;-</span> <span class="fu">sum</span>(y <span class="sc">*</span> y_prob)</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>var_x <span class="ot">&lt;-</span> (<span class="fu">sum</span>(x<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> x_prob)) <span class="sc">-</span> exp_x<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>var_y <span class="ot">&lt;-</span> (<span class="fu">sum</span>(y<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> y_prob)) <span class="sc">-</span> exp_y<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>covariance_x_y <span class="ot">&lt;-</span> exp_x_y <span class="sc">-</span> (exp_x <span class="sc">*</span> exp_y)</span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>corr_x_y <span class="ot">&lt;-</span> covariance_x_y <span class="sc">/</span> (<span class="fu">sqrt</span>(var_x) <span class="sc">*</span> <span class="fu">sqrt</span>(var_y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+4
+</div>
+<div class="cell-output cell-output-display">
+38.61
+</div>
+<div class="cell-output cell-output-display">
+5.4
+</div>
+<div class="cell-output cell-output-display">
+0.434524094626741
+</div>
+</div>
 </section>
 <section id="question-7-2" class="level3">
 <h3 class="anchored" data-anchor-id="question-7-2">Question 7:</h3>
@@ -968,7 +1258,15 @@ Answer
 <summary>
 Answer
 </summary>
-No
+<p>No</p>
+<p>Using a table like above the independence of X and Y can be check by if the total probability of a given X value times the total probability of a give Y value (the marginal probabilities) equal the probability where those to X and Y meet. This must be true for every cell.</p>
+<span class="math display">\[
+P(Y=4) = 0.40 \\
+P(X=5) = 0.50 \\
+P(Y=4,X=5) = 0.15 \\
+P(Y=4) \cdot P(X=5) = 0.20 \\
+0.15 \neq 0.20
+\]</span>
 </details>
 </section>
 </section>
@@ -991,6 +1289,30 @@ Answer
 0.471
 </details>
 <hr>
+<div id="cell-74" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">30</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>exp_this <span class="ot">&lt;-</span> (a <span class="sc">+</span> b) <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>exp_this</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>var_this <span class="ot">&lt;-</span> (b <span class="sc">-</span> a)<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> <span class="dv">12</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>sample_var <span class="ot">&lt;-</span> var_this <span class="sc">/</span> n</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>sem <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(sample_var)</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">0.60</span>, exp_this, sem) <span class="sc">-</span> </span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">0.50</span>, exp_this, sem)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+0.5
+</div>
+<div class="cell-output cell-output-display">
+0.471110214438201
+</div>
+</div>
 </section>
 <section id="question-2-4" class="level3">
 <h3 class="anchored" data-anchor-id="question-2-4">Question 2:</h3>
@@ -1008,7 +1330,11 @@ W = \frac{X_1 + X_2}{2} - \frac{Y_1 + Y_2 + Y_3}{3}
 <summary>
 Answer
 </summary>
-2
+<p>2</p>
+<p>Expectation is a linear operator so in in this case where sample are only being added, subtracted, and multiplied by constants the expectation/mean can be plugged in.</p>
+<p><span class="math display">\[E[W] = \frac{E[X] + E[X]}{2} - \frac{E[Y] + E[Y]  + E[Y]}{3}\]</span></p>
+<p><span class="math display">\[E[W] = \frac{1}{2}(E[X] + E[X]) - \frac{1}{3}(E[Y] + E[Y]  + E[Y])\]</span></p>
+<p><span class="math display">\[E[W] = \frac{1}{2}(20 + 20) - \frac{1}{3}(18 + 18 + 18) = 2\]</span></p>
 </details>
 <hr>
 </section>
@@ -1028,7 +1354,22 @@ W = \frac{X_1 + X_2}{2} - \frac{Y_1 + Y_2 + Y_3}{3}
 <summary>
 Answer
 </summary>
-5
+<p>5</p>
+<p>Variances don’t subtract, they only addand variance is not a linear operator, so we have to do the following.</p>
+<p><span class="math display">\[Var(X - Y) = Var(X) + Var(Y) - 2 \cdot Cov(X,Y)\]</span> in this case <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent so <span class="math inline">\(Cov(X,Y) = 0\)</span></p>
+<p><span class="math display">\[Var(X - Y) = Var(X) + Var(Y)\]</span></p>
+<p>and to account for the constant terms</p>
+<p><span class="math display">\[Var(aZ) = a^2Var(Z)\]</span></p>
+<p>Plugging it all in</p>
+<p><span class="math display">\[W = \frac{X + X}{2} - \frac{Y + Y + Y}{3}\]</span></p>
+<p><span class="math display">\[W = \frac{1}{2}(X + X) - \frac{1}{3}(Y + Y + Y)\]</span></p>
+<p><span class="math display">\[
+Var[W] = \left(\frac{1}{2}\right)^2 (Var[X] + Var[X])
+\underbrace{+}_{\text{change to +}}
+\left(\frac{1}{3}\right)^2 (Var[Y] + Var[Y] + Var[Y])
+\]</span></p>
+<p><span class="math display">\[Var[W] = \frac{1}{4}(4 + 4) + \frac{1}{9}(9 + 9 + 9)\]</span></p>
+<p><span class="math display">\[Var[W] = \frac{8}{4} + \frac{27}{9} = 5\]</span></p>
 </details>
 <hr>
 </section>
@@ -1048,8 +1389,25 @@ W = \frac{X_1 + X_2}{2} - \frac{Y_1 + Y_2 + Y_3}{3}
 <summary>
 Answer
 </summary>
-0.8145
+<p>0.8145</p>
+<p>We’ve now fully defined <span class="math inline">\(W \sim N(2, 5)\)</span></p>
+<p>So it’s just the <code>pnorm()</code> lookup. (1 - the result since it’s asking for the right side.)</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>mean_W <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>var_W <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>sd_W <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(var_W)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">0</span>, mean_W, sd_W)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div id="cell-78" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>mean_W <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>var_W <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>sd_W <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(var_W)</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">0</span>, mean_W, sd_W)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+0.814453315238651
+</div>
+</div>
 </section>
 </section>
 </section>
